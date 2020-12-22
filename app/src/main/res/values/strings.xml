@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">BiometricServerApp</string>
+    <string name="b_connect">Connect</string>
+    <string name="tw_connect">Connect by entering its parameters</string>
+    <string name="tI_hostname">Hostname/IP</string>
+    <string name="tI_port">Port</string>
+    <string name="you_are_connected_to">Connection to:</string>
+    <string name="b_continue">continue</string>
+    <string name="type_your_message">type your message</string>
+    <string name="b_send">Send</string>
+    <string name="opengallery">opengallery</string>
+    <string name="image">image</string>
+    <string name="back">back</string>
+
+
+</resources>
