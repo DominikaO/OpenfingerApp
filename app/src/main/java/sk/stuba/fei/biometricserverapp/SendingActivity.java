@@ -5,11 +5,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -17,22 +14,20 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.Socket;
 
+import handlers.ImageHandler;
+//skusobna activity na Person
 public class SendingActivity extends Activity {
     TextInputEditText messageText;
     Button b_send;
     ImageButton imageButton;
     ImageView imageView;
     TextView tw_answer;
+    private ImageHandler img;
 
 
 
@@ -54,6 +49,7 @@ public class SendingActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sending_activity);
+
         b_send = findViewById(R.id.b_send);
         messageText = findViewById(R.id.ti_message);
         imageView = findViewById(R.id.imageView);
@@ -69,9 +65,17 @@ public class SendingActivity extends Activity {
 
     }
 
+
+
     private void sendButtonClicked() {
-        //new SendMessage().execute();
-        new Thread(new ClientThread()).start();
+        // new Communication().execute();
+        //new Thread(new RequestAndAnswer()).start();
+        //ClientThread ct = new ClientThread();
+       // ct.run();
+
+       // ct.start();
+
+
     }
 
     class SendButtonClick implements View.OnClickListener {
@@ -115,51 +119,47 @@ public class SendingActivity extends Activity {
             builder.show();
 }
 
-    @Override
-        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-            if(resultCode != RESULT_CANCELED) {
-                switch (requestCode) {
-                    case 1:
-                        if (resultCode == RESULT_OK && data != null) {
-                            Uri selectedImage =  data.getData();
-                            String[] filePathColumn = {MediaStore.Images.Media.DATA};
-                            if (selectedImage != null) {
-                                Cursor cursor = getContentResolver().query(selectedImage,
-                                        filePathColumn, null, null, null);
-                                if (cursor != null) {
-                                    cursor.moveToFirst();
 
-                                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                                    String picturePath = cursor.getString(columnIndex);
-                                    setImageView(BitmapFactory.decodeFile(picturePath));
-                                    //imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-                                    cursor.close();
-                                }
-                            }
 
-                        }
-                        break;
-                }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK)
+        {
+            Uri chosenImageUri = data.getData();
+
+            Bitmap mBitmap = null;
+            try {
+                mBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), chosenImageUri);
+                imageView.setImageBitmap(mBitmap);
+                img = new ImageHandler(mBitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
-
-    private class SendMessage extends AsyncTask<Void, Void, Void> {
+    }
+/*
+    private class Communication extends AsyncTask<Void, Void, Void> {
 
         protected Void doInBackground(Void... voids) {
 
-            String message = messageText.getText().toString();
-            Socket socket;
-            socket=SocketHandler.getSocket();
+            //String message = messageText.getText().toString();
+            Socket clientSocket = SocketHandler.getSocket();
             try {
-                PrintWriter out = new PrintWriter(socket.getOutputStream());
-                BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                //out.write(message);
-                //out.flush();
-               // out.close();
-                out.println(message);
-                out.flush();
-                String resp = in.readLine();
-                Toast.makeText(getApplicationContext(), resp, Toast.LENGTH_SHORT).show();
+                OutputStream out = clientSocket.getOutputStream();
+                pers.writeTo(out);
+                System.out.println(pers.getSerializedSize());
+
+                InputStream is = clientSocket.getInputStream();
+                DataInputStream ds = new DataInputStream(is);
+                int bufferSize = ds.readInt();
+                System.out.println(bufferSize);
+                byte[] message = new byte[bufferSize];
+                ds.readFully(message);
+
+                Person2Proto.Person input = Person2Proto.Person.parseFrom(message);
+                Person human = new Person(input.getAge(), input.getName());
+                System.out.println(human.toString());
 
 
             } catch (IOException e) {
@@ -170,36 +170,49 @@ public class SendingActivity extends Activity {
         }
     }
 
-    class ClientThread implements Runnable{
+    class ClientThread extends Thread implements  Runnable{
         Socket clientSocket = SocketHandler.getSocket();
-        String message = messageText.getText().toString();
-        Integer skus=Integer.valueOf(message);
-        String response;
-        StringBuilder answer=new StringBuilder();
-        char[] buffer = new char[1024];
+        private String name ;
+        private int age;
+
+        ClientThread(int age, String name){
+            this.age= age;
+            this.name = name;
+
+        }
+        ClientThread(){
+
+        }
 
         @Override
         public void run() {
             try {
-                PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-                BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+                //PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+                OutputStream out = clientSocket.getOutputStream();
+               //BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                 //out.println(message);
-                out.write(message);
-                out.flush();
+                //out.write(message);
+               // out.flush();
+
+                pers.writeTo(clientSocket.getOutputStream());
 
 
-                while (in.read(buffer,0,1024) > 0)  {
-                    answer.append(buffer);
-                    String check = answer.toString();
-                   if (check.contains(".")) {
-                       break;
-                   }
+                InputStream is = clientSocket.getInputStream();
+                DataInputStream ds = new DataInputStream(is);
+                int bufferSize = ds.readInt();
+                System.out.println(bufferSize);
+                byte[] message = new byte[bufferSize];
+                ds.readFully(message);
+
+                Person2Proto.Person input = Person2Proto.Person.parseFrom(message);
+                Person human = new Person(input.getAge(), input.getName());
+                System.out.println(human.toString());
+
+                setTw_answer(human.toString());
 
 
 
-                }
-                response = answer.toString();
-                setTw_answer(response);
+
 
 
             } catch (IOException e) {
@@ -209,10 +222,98 @@ public class SendingActivity extends Activity {
 
         }
     }
+    byte[] toBytes(char[] chars) {
+        CharBuffer charBuffer = CharBuffer.wrap(chars);
+        ByteBuffer byteBuffer = Charset.forName("UTF-8").encode(charBuffer);
+        byte[] bytes = Arrays.copyOfRange(byteBuffer.array(),
+                byteBuffer.position(), byteBuffer.limit());
+        Arrays.fill(byteBuffer.array(), (byte) 0); // clear sensitive data
+        return bytes;
+    }
+
+    public class RequestAndAnswer implements Runnable {
+
+            @Override
+            public void run() {
+                System.out.println("hej");
+                Socket clientSocket = SocketHandler.getSocket();
+                String name;
+                int age;
+
+                try {
+                    //PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+                    OutputStream out = clientSocket.getOutputStream();
+                    BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+                    //out.println(message);
+                    //out.write(message);
+                    // out.flush();
+
+                   pers.writeTo(clientSocket.getOutputStream());
+                    System.out.println("poslalsom");
+
+                    int[] buffer = new int[2000];
+
+                    char[] charArray = new char[20000];
+
+                    StringBuilder builder = new StringBuilder();
+                    int numCharsRead;
+                    while ((numCharsRead = in.read(charArray, 0, charArray.length)) != -1) {
+
+                        builder.append(charArray, 0, numCharsRead);
+
+                        byte[] targetArray = builder.toString().getBytes();
+
+
+                        //DataInputStream ds = new DataInputStream(is)
+                        ByteArrayOutputStream result = new ByteArrayOutputStream();
+                        //DataInputStream ds = new DataInputStream(is);
+                        //int bufferSize = ds.readInt();
+                        //byte[] buffer = new byte[bufferSize];
+                        //System.out.println(bufferSize);
+                        System.out.println("citam");
+                        //is.read(buffer);
+                        //is.read(buffer,0,bufferSize);
+                        //buffer[bufferSize-1]= '\n';
+
+
+                        int nRead;
+                        byte[] data = new byte[20132692];
+
+                        // while ((nRead = is.read(data, 0, data.length)) != -1) {
+                        //  result.write(data, 0, nRead);
+
+
+                        System.out.println("precitalsom");
+
+
+                        //PersonOuterClass.Person in = PersonOuterClass.Person.parseFrom(buffer);
+                        PersonOuterClass.Person input = null;
+
+                        input = PersonOuterClass.Person.parseFrom(targetArray);
+                        Person2Proto.Person inp = Person2Proto.Person.parseFrom(targetArray);
+
+                        Person human2 = new Person(inp.getAge(), inp.getName());
+                        Person human = new Person(input.getAge(), input.getName());
+
+
+                        System.out.println(human.toString());
+
+                        setTw_answer("ideto");
+
+                    }
+
+                } catch (IOException e) {
+                    System.out.println("chyba");
+
+                }
+
+            }
+        }*/
+
+    }
 
 
 
 
-}
 
 

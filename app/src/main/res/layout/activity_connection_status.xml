@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
+    android:background="#E0D5F4"
+    android:backgroundTint="#EDDDF6"
+    android:fadingEdge="horizontal|vertical"
+    android:foreground="?android:attr/fingerprintAuthDrawable"
+    android:foregroundGravity="top|clip_horizontal"
+    android:foregroundTint="#6F22F6"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -13,15 +19,19 @@
         android:layout_marginTop="60dp"
         android:text="@string/you_are_connected_to"
         app:layout_constraintEnd_toEndOf="parent"
+        android:textStyle="bold"
+        android:textColor="#ED000000"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tw_hostname"
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="108dp"
         android:text="@string/tI_hostname"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/tw_port"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,24 +42,31 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="108dp"
         android:text="@string/tI_port"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tw_hostname"/>
 
     <TextView
         android:id="@+id/tw_status"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="30dp"
         android:layout_marginTop="68dp"
+        android:textStyle="bold"
+        android:textColor="#ED000000"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tw_information" />
 
     <Button
         android:id="@+id/b_continue"
-        android:layout_width="121dp"
-        android:layout_height="66dp"
+        android:layout_width="122dp"
+        android:layout_height="67dp"
+        android:background="#6d00fc"
         android:text="@string/b_continue"
+        android:textColor="@color/white"
+        app:iconTint="#2196F3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,13 +77,15 @@
         android:id="@+id/b_back"
         android:layout_width="122dp"
         android:layout_height="67dp"
+        android:background="#009185"
         android:backgroundTint="@color/teal_700"
+        android:textColor="@color/white"
         android:text="@string/back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/b_continue"
-        app:layout_constraintVertical_bias="0.059" />
+        app:layout_constraintVertical_bias="0.107" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

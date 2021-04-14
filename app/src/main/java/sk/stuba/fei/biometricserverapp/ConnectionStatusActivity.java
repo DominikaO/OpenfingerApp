@@ -11,10 +11,12 @@ import android.widget.TextView;
 import java.io.IOException;
 import java.net.Socket;
 
+import handlers.SocketHandler;
+
 public class ConnectionStatusActivity extends Activity {
     private TextView tw_hostname;
     private TextView tw_ip, tw_status;
-    private Button b_continue;
+    private Button b_continue, b_back;
     String TheHost, ThePort;
     Socket socket;
 
@@ -35,6 +37,7 @@ public class ConnectionStatusActivity extends Activity {
         tw_status = findViewById(R.id.tw_status);
         b_continue = new Button(this);
         b_continue=findViewById(R.id.b_continue);
+        b_back = findViewById(R.id.b_back);
 
 
         Intent getText = getIntent();
@@ -46,13 +49,14 @@ public class ConnectionStatusActivity extends Activity {
 
         new ConnectingToServer().execute();
         b_continue.setOnClickListener(new ContinueButtonClick());
+        b_back.setOnClickListener(new BackButtonClick());
 
     }
 
-//todo buttton back onclicklistener
+
 
     private void continueButtonClicked() {
-        Intent new_intent = new Intent(getApplicationContext(), SendingActivity.class);
+        Intent new_intent = new Intent(getApplicationContext(), MenuActivity.class);
         startActivity(new_intent);
         finish();
     }
@@ -61,6 +65,18 @@ public class ConnectionStatusActivity extends Activity {
         @Override
         public void onClick(View v) {
             continueButtonClicked();
+        }
+    }
+    private void backButtonClicked() {
+        Intent new_intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(new_intent);
+        finish();
+    }
+
+    class BackButtonClick implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            backButtonClicked();
         }
     }
 
@@ -79,7 +95,7 @@ public class ConnectionStatusActivity extends Activity {
                 str= str.valueOf(isConn);
                 if (str=="true") {
                     tw_status.setText("was sucessful");
-                }
+                }else tw_status.setText("failed");
             } catch (IOException e) {
                 tw_status.setText("failed");
             }

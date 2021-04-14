@@ -2,22 +2,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/ti"
+    android:id="@+id/mainActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E0D5F4"
+    android:backgroundTint="#EDDDF6"
+    android:fadingEdge="horizontal|vertical"
+    android:foreground="?android:attr/fingerprintAuthDrawable"
+    android:foregroundGravity="top|clip_horizontal"
+    android:foregroundTint="#6F22F6"
     tools:context=".MainActivity">
-
-    <Button
-        android:id="@+id/b_connect"
-        android:layout_width="142dp"
-        android:layout_height="89dp"
-        android:text="@string/b_connect"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.442" />
 
     <TextView
         android:id="@+id/tW_aboutConnection"
@@ -25,13 +19,18 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="600dp"
         android:clickable="false"
+        android:foregroundTint="#FFFFFF"
         android:text="@string/tw_connect"
+        android:textColor="#ED000000"
+        android:textColorHighlight="#03A9F4"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.477" />
+        app:layout_constraintVertical_bias="0.99" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout4"
@@ -40,10 +39,10 @@
         android:layout_marginBottom="56dp"
         app:layout_constraintBottom_toTopOf="@+id/b_connect"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tI_port"
-        app:layout_constraintVertical_bias="0.283">
+        app:layout_constraintVertical_bias="1.0">
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -53,9 +52,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/tI_port"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tI_hostname"
-        app:layout_constraintVertical_bias="0.276">
+        app:layout_constraintVertical_bias="0.0">
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,10 +63,12 @@
         android:id="@+id/tI_port"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="44dp"
         android:hint="@string/tI_port"
+        android:textColor="#DF000000"
+        android:textColorHighlight="#03A9F4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tI_hostname" />
 
@@ -74,10 +76,32 @@
         android:id="@+id/tI_hostname"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:hint="@string/tI_hostname"
+        android:textColor="#E1000000"
+        android:textColorHighlight="#03A9F4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tW_aboutConnection" />
+
+    <Button
+        android:id="@+id/b_connect"
+        android:layout_width="122dp"
+        android:layout_height="67dp"
+        android:background="#03A9F4"
+        android:backgroundTint="#03A9F4"
+        android:foregroundTint="#03A9F4"
+        android:text="@string/b_connect"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#03A9F4"
+        android:textColorHint="#03A9F4"
+        app:iconTint="#03A9F4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.528" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

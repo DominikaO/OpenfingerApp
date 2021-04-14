@@ -11,6 +11,18 @@
     <string name="opengallery">opengallery</string>
     <string name="image">image</string>
     <string name="back">back</string>
+    <string name="age">Age</string>
+    <string name="name">Name</string>
+    <string name="title_activity_main2">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="activities">Activities</string>
+    <string name="register">Register</string>
+    <string name="find">Find</string>
+    <string name="server_settings">Server Settings</string>
+    <string name="registration">Registration</string>
+    <string name="enter_name_of_person">Enter name of person</string>
 
 
 </resources>

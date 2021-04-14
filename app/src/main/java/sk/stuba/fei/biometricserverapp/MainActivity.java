@@ -3,6 +3,7 @@ package sk.stuba.fei.biometricserverapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.autofill.AutofillValue;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +17,8 @@ public class MainActivity extends AppCompatActivity{
     TextView tW_aboutConnection;
     TextInputEditText tI_hostname, tI_port;
     TextView tw_hostname;
+    AutofillValue ip= AutofillValue.forText("147.175.106.8");
+    AutofillValue port = AutofillValue.forText("55556");
 
 
 
@@ -27,7 +30,9 @@ public class MainActivity extends AppCompatActivity{
         b_connect = (Button) findViewById(R.id.b_connect);
         tW_aboutConnection = (TextView) findViewById(R.id.tW_aboutConnection);
         tI_hostname = (TextInputEditText) findViewById(R.id.tI_hostname);
+        tI_hostname.autofill(ip);
         tI_port = (TextInputEditText) findViewById(R.id.tI_port);
+        tI_port.autofill(port);
         tw_hostname = findViewById(R.id.tw_hostname);
 
         b_connect.setOnClickListener(new ConnectButtonClick());

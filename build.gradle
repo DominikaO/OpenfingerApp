@@ -1,22 +1,11 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-apply plugin: 'com.google.protobuf'
-apply plugin: 'com.google.protobuf'
-
-//sourceSets {
-    //main.java.srcDirs += "${protobuf.generatedFilesBaseDir}/main/javalite"
-//}
 buildscript {
-    ext.kotlin_version = '1.2.10'
-    ext.protobufVersion = '0.8.3'
-
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.1.0"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "com.google.protobuf:protobuf-gradle-plugin:$protobufVersion"
+        classpath "com.android.tools.build:gradle:4.1.1"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -29,30 +18,7 @@ allprojects {
         jcenter()
     }
 }
-protobuf {
-    protoc {
-        // You still need protoc like in the non-Android case
-        artifact = 'com.google.protobuf:protoc:3.0.0'
-    }
-    plugins {
-        javalite {
-            // The codegen for lite comes as a separate artifact
-            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0'
-        }
-    }
-    generateProtoTasks {
-        all().each { task ->
-            task.builtins {
-                // In most cases you don't need the full Java output
-                // if you use the lite output.
-                remove java
-            }
-            task.plugins {
-                javalite { }
-            }
-        }
-    }
-}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
