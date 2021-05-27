@@ -11,6 +11,8 @@ import android.widget.TextView;
 import java.io.IOException;
 import java.net.Socket;
 
+import javax.net.ssl.SSLSocket;
+
 import handlers.SocketHandler;
 
 public class ConnectionStatusActivity extends Activity {
@@ -19,6 +21,7 @@ public class ConnectionStatusActivity extends Activity {
     private Button b_continue, b_back;
     String TheHost, ThePort;
     Socket socket;
+    SSLSocket socketik;
 
 
 
@@ -89,6 +92,8 @@ public class ConnectionStatusActivity extends Activity {
             try {
                 //socket = new Socket("147.175.106.8", 22222);
                 socket=new Socket(TheHost, Integer.parseInt(ThePort));
+                //SSLSocketFactory factory = (SSLSocketFactory)SSLSocketFactory.getDefault();
+                //socketik  = (SSLSocket)factory.createSocket(TheHost, Integer.parseInt(ThePort));
                 SocketHandler.setSocket(socket);
                 boolean isConn=socket.isConnected();
                 String str= null;
@@ -97,7 +102,7 @@ public class ConnectionStatusActivity extends Activity {
                     tw_status.setText("was sucessful");
                 }else tw_status.setText("failed");
             } catch (IOException e) {
-                tw_status.setText("failed");
+                tw_status.setText("exception");
             }
 
 

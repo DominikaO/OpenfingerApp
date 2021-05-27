@@ -22,7 +22,22 @@
     <string name="find">Find</string>
     <string name="server_settings">Server Settings</string>
     <string name="registration">Registration</string>
-    <string name="enter_name_of_person">Enter name of person</string>
+    <string name="enter_name_of_person">Enter registration login</string>
+    <string name="back_to_menu">back_to_menu</string>
+    <string name="verificate">verify</string>
+    <string name="verification">Verification</string>
+    <string name="enter_login">Enter your login</string>
+    <string name="results_of_preprocessing">Results of preprocessing</string>
+    <string name="preprocessing">Preprocessing request</string>
+    <string name="block_size">block size</string>
+    <string name="lambda">lambda for Gabor filter </string>
+    <string name="sigma">sigma parameter for Gabor filter</string>
+    <string name="submit">submit</string>
+    <string name="preprocessingrequest">Preprocess</string>
+    <string name="extraction">Extraction</string>
+    <string name="extractionReq">Extraction request</string>
+    <string name="extractionRes">Extraction result</string>
+    <string name="extract">Extract</string>
 
 
 </resources>

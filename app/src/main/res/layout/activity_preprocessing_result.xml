@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ecdcfc"
+    android:backgroundTint="#ecdcfc"
+    android:fadingEdge="vertical"
+    android:foreground="?android:attr/fingerprintAuthDrawable"
+    android:foregroundGravity="top|clip_horizontal"
+    android:foregroundTint="#6F22F6"
+    android:orientation="vertical"
+    tools:context=".PreprocessingResultActivity">
+    <ImageButton
+        android:id="@+id/b_back_to_menu4"
+        android:layout_width="42dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:background="#ecdcfc"
+        android:backgroundTint="#ecdcfc"
+        android:contentDescription="@string/back_to_menu"
+        android:src="@drawable/back_arrow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.047" />
+
+    <TextView
+        android:id="@+id/tv_preprocesssingRes"
+        android:layout_width="326dp"
+        android:layout_height="53dp"
+        android:gravity="center"
+        android:text="@string/results_of_preprocessing"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.054" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="404dp"
+        android:layout_height="527dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_preprocesssingRes">
+
+        <LinearLayout
+            android:id="@+id/scrollablePrepResults"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

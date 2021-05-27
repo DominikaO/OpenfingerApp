@@ -5,8 +5,8 @@
     android:id="@+id/mainActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E0D5F4"
-    android:backgroundTint="#EDDDF6"
+    android:background="#ecdcfc"
+    android:backgroundTint="#ecdcfc"
     android:fadingEdge="horizontal|vertical"
     android:foreground="?android:attr/fingerprintAuthDrawable"
     android:foregroundGravity="top|clip_horizontal"
@@ -15,9 +15,10 @@
 
     <TextView
         android:id="@+id/tW_aboutConnection"
+        android:gravity="center"
         android:layout_width="292dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="600dp"
+        android:layout_marginBottom="500dp"
         android:clickable="false"
         android:foregroundTint="#FFFFFF"
         android:text="@string/tw_connect"
@@ -30,53 +31,26 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.99" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout4"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
-        app:layout_constraintBottom_toTopOf="@+id/b_connect"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tI_port"
-        app:layout_constraintVertical_bias="1.0">
-
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintVertical_bias="1.0" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout3"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/tI_port"
+        app:layout_constraintBottom_toBottomOf="@+id/tI_hostname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tI_hostname"
+        app:layout_constraintTop_toTopOf="@+id/tI_hostname"
         app:layout_constraintVertical_bias="0.0">
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/tI_port"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:hint="@string/tI_port"
-        android:textColor="#DF000000"
-        android:textColorHighlight="#03A9F4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tI_hostname" />
-
-    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/tI_hostname"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:hint="@string/tI_hostname"
         android:textColor="#E1000000"
         android:textColorHighlight="#03A9F4"
@@ -99,9 +73,29 @@
         app:iconTint="#03A9F4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.528" />
+        app:layout_constraintVertical_bias="0.673" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/tI_port"
+        app:layout_constraintTop_toBottomOf="@+id/tW_aboutConnection"
+        tools:layout_editor_absoluteX="110dp">
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/tI_port"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/tI_port"
+        app:layout_constraintBottom_toTopOf="@+id/b_connect"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

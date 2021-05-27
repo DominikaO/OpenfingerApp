@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message RegistrationResponse{
+    int32 requestId = 1;
+    string registration_status = 2;
+
+}

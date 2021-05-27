@@ -19,7 +19,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BiometricServerApp">
-        <activity android:name=".Registration_Activity"></activity>
+        <activity android:name=".ExtractionResultActivity"></activity>
+        <activity android:name=".ExtractionRequestActivity" />
+        <activity android:name=".PreprocessingRequestActivity" />
+        <activity android:name=".PreprocessingResultActivity" />
+        <activity android:name=".VerificationActivity" />
+        <activity android:name=".Registration_Activity" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -31,13 +36,6 @@
         <activity android:name=".ConnectionStatusActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".SendingActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.SEND" />
-
-                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>

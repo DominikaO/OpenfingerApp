@@ -1,0 +1,9 @@
+syntax = "proto3";
+import "Fingerprint.proto";
+package OpenFinger;
+
+message RegistrationRequest{
+    int32 requestId = 1;
+    string login = 2;
+    Fingerprint fingerprint = 3;
+}

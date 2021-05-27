@@ -13,43 +13,46 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.protobuf.ByteString;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.Socket;
 
+import Helpers.MessageCreator;
+import OpenFinger.WrapperOuterClass;
 import handlers.ImageHandler;
+import handlers.RegistrationRequestHandler;
 import handlers.SocketHandler;
-import message.RegistrationProto;
 
 public class Registration_Activity extends Activity {
-    private static int operation = 1;
+
     ImageView imageView;
     ImageHandler img = new ImageHandler();
-    ImageButton imageButton;
+    ImageButton imageButton, b_back;
     TextInputEditText ti_name;
-    RegistrationProto.Registration registration;
     Button b_send;
+    RegistrationRequestHandler registrationRequestHandler = new RegistrationRequestHandler(1);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_);
 
-        imageButton= findViewById(R.id.imageButton2);
-        ti_name = findViewById(R.id.tin_name);
-        b_send = findViewById(R.id.b_registerme);
-        imageView = findViewById(R.id.imageView2);
+        imageButton= findViewById(R.id.b_gallery1);
+        ti_name = findViewById(R.id.tin_login);
+        b_send = findViewById(R.id.b_register);
+        imageView = findViewById(R.id.imageView_fingerprint1);
+        b_back = findViewById(R.id.b_back_to_menu1);
 
 
         imageButton.setOnClickListener(new Registration_Activity.ImageButtonClick());
         b_send.setOnClickListener(new Registration_Activity.ButtonClick());
+        b_back.setOnClickListener(new Registration_Activity.B_BackClick());
 //        registration= createMessage(ti_name,imageView);
 
     }
@@ -66,6 +69,22 @@ public class Registration_Activity extends Activity {
         }
     }
 
+
+    private void B_BackClicked() {
+
+        Intent new_intent = new Intent(getApplicationContext(), MenuActivity.class);
+        startActivity(new_intent);
+        finish();
+    }
+
+    class B_BackClick implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            B_BackClicked();
+        }
+    }
+
+
     private void ButtonClicked() {
         new Thread(new RequestAndAnswer()).start();
 
@@ -76,6 +95,12 @@ public class Registration_Activity extends Activity {
         public void onClick(View v) {
             ButtonClicked();
         }
+    }
+
+    public void showToast(final String toast)
+    {
+
+        runOnUiThread(() ->  Toast.makeText(this, toast, Toast.LENGTH_LONG).show());
     }
 
     private void selectImage(Context context) {
@@ -122,26 +147,11 @@ public class Registration_Activity extends Activity {
         }
     }
 
-    public RegistrationProto.Registration createMessage(TextInputEditText ti_name,ImageView imageView){
 
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        img.getPic().compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte[] byteArray = stream.toByteArray();
-        img.getPic().recycle();
-
-        String name =ti_name.getText().toString();
-
-
-
-        RegistrationProto.Registration mess =
-                RegistrationProto.Registration.newBuilder().
-                        setName(name).setPic(ByteString.copyFrom(byteArray))
-                        .build();
-
-        return mess;
-    }
 
     public class RequestAndAnswer implements Runnable {
+
+
 
         @Override
         public void run() {
@@ -150,32 +160,43 @@ public class Registration_Activity extends Activity {
 
 
             try {
-
                 OutputStream out = clientSocket.getOutputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-                RegistrationProto.Registration registration2 = createMessage(ti_name,imageView);
-                registration2.writeTo(clientSocket.getOutputStream());
+                DataInputStream is = new DataInputStream(clientSocket.getInputStream());
+                WrapperOuterClass.Wrapper registration =
+                        MessageCreator.createRegistrationRequest(ti_name,img,registrationRequestHandler);
+                registration.writeTo(out);
 
-                char[] charArray = new char[20000];
+                byte[] buffer = new byte[1024];
+                byte[] temp = null;
 
-                StringBuilder builder = new StringBuilder();
-                int numCharsRead;
-                while ((numCharsRead = in.read(charArray, 0, charArray.length)) != -1) {
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                int numbytesread = 0;
+                while (true) {
+                    numbytesread = is.read(buffer, 0, buffer.length);
+                    byteArrayOutputStream.write(buffer,0,numbytesread);
+                    temp =byteArrayOutputStream.toByteArray();
 
-                    builder.append(charArray, 0, numCharsRead);
-
-                    byte[] targetArray = builder.toString().getBytes();
 
                     //cakam na server
+                    try {
+                        WrapperOuterClass.Wrapper response =
+                                WrapperOuterClass.Wrapper.parseFrom(temp);
+                        showToast(response.getRegisterResponse().getRegistrationStatus());
+                        //registrationRequestHandler.removeRequest(registration2.getRegisterRequest());
+                        finish();
+                        startActivity(getIntent());
+                        break;
+                    } catch (Exception e) {
+                        e.printStackTrace();
 
-
+                    }
                 }
+            }catch (Exception e) {
+                e.printStackTrace();
 
-            } catch (IOException e) {
-                System.out.println("chyba");
+            }
 
             }
 
         }
     }
-}

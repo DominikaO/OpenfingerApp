@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ecdcfc"
+    android:backgroundTint="#ecdcfc"
+    android:fadingEdge="horizontal|vertical"
+    android:foreground="?android:attr/fingerprintAuthDrawable"
+    android:foregroundGravity="top|clip_horizontal"
+    android:foregroundTint="#6F22F6"
+    tools:context=".PreprocessingRequestActivity">
+
+
+    <TextView
+        android:id="@+id/tv_preprocesssingRes"
+        android:layout_width="326dp"
+        android:layout_height="55dp"
+        android:gravity="center"
+        android:text="@string/preprocessing"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.047" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tin_block"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="347dp"
+        android:layout_height="75dp"
+        android:hint="@string/block_size"
+        app:endIconMode="clear_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_preprocesssingRes"
+        app:layout_constraintVertical_bias="0.018">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tine_block"
+            android:layout_width="297dp"
+            android:layout_height="55dp"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tin_lambda"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="347dp"
+        android:layout_height="75dp"
+        android:hint="@string/lambda"
+        app:endIconMode="clear_text"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_preprocesssingRes"
+        app:layout_constraintVertical_bias="0.165">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tine_lambda"
+            android:layout_width="297dp"
+            android:layout_height="55dp"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tin_sigma"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="347dp"
+        android:layout_height="75dp"
+        android:hint="@string/sigma"
+        app:endIconMode="clear_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_preprocesssingRes"
+        app:layout_constraintVertical_bias="0.319">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tine_sigma"
+            android:layout_width="297dp"
+            android:layout_height="55dp"
+            tools:layout_editor_absoluteX="32dp"
+            tools:layout_editor_absoluteY="294dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageButton
+        android:id="@+id/b_gallery3"
+        style="@android:style/Widget.DeviceDefault.ImageButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#6d00fc"
+        android:contentDescription="@string/opengallery"
+
+        android:foregroundTint="#FFFFFF"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.116"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.753"
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+    <Button
+        android:id="@+id/b_submit"
+        android:layout_width="113dp"
+        android:layout_height="68dp"
+        android:background="#6d00fc"
+        android:text="@string/submit"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b_gallery3"
+        app:layout_constraintVertical_bias="0.488" />
+
+    <ImageButton
+        android:id="@+id/b_back_to_menu3"
+        android:layout_width="42dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:background="#ecdcfc"
+        android:backgroundTint="#ecdcfc"
+        android:contentDescription="@string/back_to_menu"
+        android:src="@drawable/back_arrow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.047" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CheckBox"
+        app:layout_constraintBottom_toTopOf="@+id/b_gallery3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.097"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tin_sigma"
+        app:layout_constraintVertical_bias="0.18" />
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CheckBox"
+        app:layout_constraintBottom_toTopOf="@+id/b_gallery3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox"
+        app:layout_constraintVertical_bias="0.264" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

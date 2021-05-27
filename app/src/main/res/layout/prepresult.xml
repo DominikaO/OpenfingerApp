@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="368dp"
+    android:layout_height="495dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_prepresult"
+        android:layout_width="match_parent"
+        android:layout_height="76dp" />
+
+    <ImageView
+        android:id="@+id/img_prepResults"
+        android:layout_width="293dp"
+        android:layout_height="450dp"
+        android:contentDescription="@android:string/fingerprint_icon_content_description"
+        app:srcCompat="@drawable/finger" />
+</LinearLayout>

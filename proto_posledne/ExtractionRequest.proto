@@ -1,0 +1,7 @@
+syntax = "proto3";
+import "Fingerprint.proto";
+package OpenFinger;
+
+message ExtractionRequest{
+  Fingerprint fingerprint = 1; // fingerprint
+}

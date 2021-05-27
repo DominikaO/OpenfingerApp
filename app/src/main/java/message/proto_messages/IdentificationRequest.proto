@@ -1,0 +1,17 @@
+syntax = "proto3";
+import "Fingerprint.proto";
+import "Level2Vector.proto";
+package OpenFinger;
+
+message Level2VectorOfFingerprint{
+	int32 fingerprint_id = 1;
+	Level2Vector level2vector = 2;
+}
+
+message IdentificationRequest{
+	// fingerprint image of unknown user
+	Fingerprint fingerprint = 1;
+	// array of Level-2 vectors from user DB
+	// where we search the identity
+	repeated Level2VectorOfFingerprint vectors = 2; 
+}

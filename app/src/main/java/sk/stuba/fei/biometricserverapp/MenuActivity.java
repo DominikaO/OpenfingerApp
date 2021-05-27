@@ -7,29 +7,34 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MenuActivity extends AppCompatActivity {
+public class MenuActivity extends AppCompatActivity{
     private Button b_register;
-    private Button b_find;
-    private Button b_servsett;
+    private Button b_verificate, b_preprocRequest, b_readme;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        b_register = findViewById(R.id.b_registerme);
-        b_find = findViewById(R.id.b_find);
-        b_servsett = findViewById(R.id.b_servsett);
+        b_register = findViewById(R.id.b_registration);
+        b_verificate = findViewById(R.id.b_verification);
+        b_preprocRequest = findViewById(R.id.b_preprocRequest);
+        b_readme = findViewById(R.id.b_extract);
+
 
         b_register.setOnClickListener(new RegisterButtonClick());
-        b_find.setOnClickListener(new FindButtonClick());
-        b_servsett.setOnClickListener(new SettingsButtonClick());
+        b_verificate.setOnClickListener(new VerificateButtonClick());
+        b_preprocRequest.setOnClickListener(new PreprocessingButtonClick());
+        b_readme.setOnClickListener(new ReadMeButtonClick());
+
     }
 
     private void registerButtonClicked() {
         Intent new_intent = new Intent(getApplicationContext(), Registration_Activity.class);
         startActivity(new_intent);
         finish();
+
     }
 
     class RegisterButtonClick implements View.OnClickListener {
@@ -39,29 +44,43 @@ public class MenuActivity extends AppCompatActivity {
         }
     }
 
-    private void findButtonClicked() {
-        Intent new_intent = new Intent(getApplicationContext(), SendingActivity.class);
+    private void verificateButtonClicked() {
+        Intent new_intent = new Intent(getApplicationContext(), VerificationActivity.class);
         startActivity(new_intent);
         finish();
     }
 
-    class FindButtonClick implements View.OnClickListener {
+    class VerificateButtonClick implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            findButtonClicked();
+            verificateButtonClicked();
         }
     }
 
-    private void settingsButtonClicked() {
-        Intent new_intent = new Intent(getApplicationContext(), SendingActivity.class);
+    private void preprocessingButtonClicked() {
+        Intent new_intent = new Intent(getApplicationContext(), PreprocessingRequestActivity.class);
         startActivity(new_intent);
         finish();
     }
 
-    class SettingsButtonClick implements View.OnClickListener {
+    class PreprocessingButtonClick implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            settingsButtonClicked();
+            preprocessingButtonClicked();
+        }
+    }
+
+    private void readMeButtonClicked() {
+        Intent new_intent = new Intent(getApplicationContext(), ExtractionRequestActivity.class);
+        startActivity(new_intent);
+        finish();
+
+    }
+
+    class ReadMeButtonClick implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            readMeButtonClicked();
         }
     }
 }

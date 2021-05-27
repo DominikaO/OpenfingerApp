@@ -1,0 +1,13 @@
+syntax = "proto3";
+import "Fingerprint.proto";
+import "Level2Vector.proto";
+package OpenFinger;
+
+message VerificationRequest{
+	// fingerprint image of user who 
+	// claims specific identity
+	Fingerprint fingerprint = 1;
+	// all feature vectors of specific identity
+	// stored in DB
+	repeated Level2Vector level2vectors = 2;
+}
