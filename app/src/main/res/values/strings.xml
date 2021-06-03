@@ -38,6 +38,12 @@
     <string name="extractionReq">Extraction request</string>
     <string name="extractionRes">Extraction result</string>
     <string name="extract">Extract</string>
+    <string name="quality_map">quality map</string>
+    <string name="edit_contrast">edit contrast</string>
+    <string name="binarization">binarization</string>
+    <string name="color_map">color map</string>
+    <string name="gabor_filter">gabor filter</string>
+    <string name="skeleton">skeleton</string>
 
 
 </resources>

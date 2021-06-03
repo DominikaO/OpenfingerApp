@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -26,6 +27,7 @@ import Helpers.MessageCreator;
 import OpenFinger.WrapperOuterClass;
 import handlers.ImageHandler;
 import handlers.SocketHandler;
+import handlers.SyncPrepRequestHandler;
 
 public class PreprocessingRequestActivity extends Activity {
 
@@ -35,6 +37,7 @@ public class PreprocessingRequestActivity extends Activity {
     private ImageHandler imageHandler = new ImageHandler();
     private Button b_submit;
     private ImageView b_back;
+    public CheckBox quality, contrast, colormap, gaborfilter, binar, skelet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,16 @@ public class PreprocessingRequestActivity extends Activity {
         sigma =findViewById(R.id.tine_sigma);
         b_submit=findViewById(R.id.b_submit);
         b_back = findViewById(R.id.b_back_to_menu3);
+
+        quality = findViewById(R.id.chckB_quality1);
+        contrast = findViewById(R.id.chcB_contrast2);
+        colormap = findViewById(R.id.chckB_colormap3);
+        gaborfilter = findViewById(R.id.chcB_gabor4);
+        binar = findViewById(R.id.chcB_binarization5);
+        skelet = findViewById(R.id.chcB_skeleton6);
+
+
+
 
         imageButton.setOnClickListener(new ImageButtonClick());
         b_submit.setOnClickListener(new ButtonClick());
@@ -67,6 +80,17 @@ public class PreprocessingRequestActivity extends Activity {
         }
     }
     private void ButtonClicked() {
+        //checking checkboxes and setting to true/false to handler
+        SyncPrepRequestHandler.setBinarization(skelet.isChecked());
+        SyncPrepRequestHandler.setColormap(colormap.isChecked());
+        SyncPrepRequestHandler.setConstrast(contrast.isChecked());
+        SyncPrepRequestHandler.setGaborfilter(gaborfilter.isChecked());
+        SyncPrepRequestHandler.setQualityMap(quality.isChecked());
+        SyncPrepRequestHandler.setSkeleton(skelet.isChecked());
+
+        SyncPrepRequestHandler.addCheckBoxes();
+
+
         new Thread(new Submit()).start();
 
     }
@@ -155,6 +179,7 @@ public class PreprocessingRequestActivity extends Activity {
                 DataInputStream is = new DataInputStream(clientSocket.getInputStream());
                 WrapperOuterClass.Wrapper prepRequest = MessageCreator.createPreprocessRequest(imageHandler,block,lambda,sigma);
                 prepRequest.writeTo(out);
+
 
 
                 Intent prepResultIntent = new Intent(getApplicationContext(), PreprocessingResultActivity.class);

@@ -8,20 +8,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.net.Socket;
+import java.util.List;
 
 import Helpers.BitmapHelper;
 import OpenFinger.FingerprintOuterClass;
 import OpenFinger.WrapperOuterClass;
 import handlers.SocketHandler;
+import handlers.SyncPrepRequestHandler;
 
 public class PreprocessingResultActivity extends Activity {
 
-    private ImageView result1, back;
+    private ImageView imageResult, back;
+    private TextView tv_info;
     public boolean createIntent = false;
     public WrapperOuterClass.Wrapper wrapperHandler;
 
@@ -32,6 +36,7 @@ public class PreprocessingResultActivity extends Activity {
         setContentView(R.layout.activity_preprocessing_result);
         back = findViewById(R.id.b_back_to_menu4);
         back.setOnClickListener(new B_BackClick());
+
 
         new Thread(new ReadResponse()).start();
         while(true) {
@@ -63,15 +68,23 @@ public class PreprocessingResultActivity extends Activity {
         LinearLayout layoutPrepresults = findViewById(R.id.scrollablePrepResults);
         LayoutInflater inflater = LayoutInflater.from(this);
 
+        List<Boolean> list = SyncPrepRequestHandler.getCheckBoxes();
+
         for ( int i = 0; i< numberOfResults; i++){
-            FingerprintOuterClass.Fingerprint fingerprint = response.getPreprocResponse().getResults(i);
-            Bitmap fingerprintView = BitmapHelper.FingerprintToBitmap(fingerprint);
+            //if checkbox was checked in request show result
+            if (SyncPrepRequestHandler.getCheckBoxes().get(i).booleanValue()) {
 
-            View view = inflater.inflate(R.layout.prepresult, layoutPrepresults, false);
-            result1 = view.findViewById(R.id.img_prepResults);
-            result1.setImageBitmap(fingerprintView);
-            layoutPrepresults.addView(view);
-
+                FingerprintOuterClass.Fingerprint fingerprint = response.getPreprocResponse().getResults(i).getFingerprint();
+                String preprocInfo = response.getPreprocResponse().getResults(i).getInfo();
+                Bitmap fingerprintView;
+                fingerprintView = BitmapHelper.FingerprintToBitmap(fingerprint);
+                View view = inflater.inflate(R.layout.prepresult, layoutPrepresults, false);
+                imageResult = view.findViewById(R.id.img_prepResults);
+                tv_info = view.findViewById(R.id.tv_infoResult);
+                imageResult.setImageBitmap(fingerprintView);
+                tv_info.setText(preprocInfo);
+                layoutPrepresults.addView(view);
+            }
         }
     }
 
@@ -101,7 +114,6 @@ public class PreprocessingResultActivity extends Activity {
 
                     try {
                         response = WrapperOuterClass.Wrapper.parseFrom(temp);
-                        showToast("" + response.getPreprocResponse().getResultsList().size());//povie kolko tam je vysledkov
                         break;
                     } catch (Exception e) {
                         e.printStackTrace();

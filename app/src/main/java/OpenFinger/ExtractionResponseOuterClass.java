@@ -32,6 +32,21 @@ public final class ExtractionResponseOuterClass {
      * <code>.OpenFinger.Level2Vector level2vector = 1;</code>
      */
     OpenFinger.Level2VectorOuterClass.Level2VectorOrBuilder getLevel2VectorOrBuilder();
+
+    /**
+     * <code>.OpenFinger.Fingerprint extraction_image = 2;</code>
+     * @return Whether the extractionImage field is set.
+     */
+    boolean hasExtractionImage();
+    /**
+     * <code>.OpenFinger.Fingerprint extraction_image = 2;</code>
+     * @return The extractionImage.
+     */
+    OpenFinger.FingerprintOuterClass.Fingerprint getExtractionImage();
+    /**
+     * <code>.OpenFinger.Fingerprint extraction_image = 2;</code>
+     */
+    OpenFinger.FingerprintOuterClass.FingerprintOrBuilder getExtractionImageOrBuilder();
   }
   /**
    * Protobuf type {@code OpenFinger.ExtractionResponse}
@@ -87,6 +102,19 @@ public final class ExtractionResponseOuterClass {
               if (subBuilder != null) {
                 subBuilder.mergeFrom(level2Vector_);
                 level2Vector_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              OpenFinger.FingerprintOuterClass.Fingerprint.Builder subBuilder = null;
+              if (extractionImage_ != null) {
+                subBuilder = extractionImage_.toBuilder();
+              }
+              extractionImage_ = input.readMessage(OpenFinger.FingerprintOuterClass.Fingerprint.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(extractionImage_);
+                extractionImage_ = subBuilder.buildPartial();
               }
 
               break;
@@ -149,6 +177,32 @@ public final class ExtractionResponseOuterClass {
       return getLevel2Vector();
     }
 
+    public static final int EXTRACTION_IMAGE_FIELD_NUMBER = 2;
+    private OpenFinger.FingerprintOuterClass.Fingerprint extractionImage_;
+    /**
+     * <code>.OpenFinger.Fingerprint extraction_image = 2;</code>
+     * @return Whether the extractionImage field is set.
+     */
+    @java.lang.Override
+    public boolean hasExtractionImage() {
+      return extractionImage_ != null;
+    }
+    /**
+     * <code>.OpenFinger.Fingerprint extraction_image = 2;</code>
+     * @return The extractionImage.
+     */
+    @java.lang.Override
+    public OpenFinger.FingerprintOuterClass.Fingerprint getExtractionImage() {
+      return extractionImage_ == null ? OpenFinger.FingerprintOuterClass.Fingerprint.getDefaultInstance() : extractionImage_;
+    }
+    /**
+     * <code>.OpenFinger.Fingerprint extraction_image = 2;</code>
+     */
+    @java.lang.Override
+    public OpenFinger.FingerprintOuterClass.FingerprintOrBuilder getExtractionImageOrBuilder() {
+      return getExtractionImage();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -166,6 +220,9 @@ public final class ExtractionResponseOuterClass {
       if (level2Vector_ != null) {
         output.writeMessage(1, getLevel2Vector());
       }
+      if (extractionImage_ != null) {
+        output.writeMessage(2, getExtractionImage());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -178,6 +235,10 @@ public final class ExtractionResponseOuterClass {
       if (level2Vector_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getLevel2Vector());
+      }
+      if (extractionImage_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getExtractionImage());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -199,6 +260,11 @@ public final class ExtractionResponseOuterClass {
         if (!getLevel2Vector()
             .equals(other.getLevel2Vector())) return false;
       }
+      if (hasExtractionImage() != other.hasExtractionImage()) return false;
+      if (hasExtractionImage()) {
+        if (!getExtractionImage()
+            .equals(other.getExtractionImage())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -213,6 +279,10 @@ public final class ExtractionResponseOuterClass {
       if (hasLevel2Vector()) {
         hash = (37 * hash) + LEVEL2VECTOR_FIELD_NUMBER;
         hash = (53 * hash) + getLevel2Vector().hashCode();
+      }
+      if (hasExtractionImage()) {
+        hash = (37 * hash) + EXTRACTION_IMAGE_FIELD_NUMBER;
+        hash = (53 * hash) + getExtractionImage().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -353,6 +423,12 @@ public final class ExtractionResponseOuterClass {
           level2Vector_ = null;
           level2VectorBuilder_ = null;
         }
+        if (extractionImageBuilder_ == null) {
+          extractionImage_ = null;
+        } else {
+          extractionImage_ = null;
+          extractionImageBuilder_ = null;
+        }
         return this;
       }
 
@@ -383,6 +459,11 @@ public final class ExtractionResponseOuterClass {
           result.level2Vector_ = level2Vector_;
         } else {
           result.level2Vector_ = level2VectorBuilder_.build();
+        }
+        if (extractionImageBuilder_ == null) {
+          result.extractionImage_ = extractionImage_;
+        } else {
+          result.extractionImage_ = extractionImageBuilder_.build();
         }
         onBuilt();
         return result;
@@ -434,6 +515,9 @@ public final class ExtractionResponseOuterClass {
         if (other == OpenFinger.ExtractionResponseOuterClass.ExtractionResponse.getDefaultInstance()) return this;
         if (other.hasLevel2Vector()) {
           mergeLevel2Vector(other.getLevel2Vector());
+        }
+        if (other.hasExtractionImage()) {
+          mergeExtractionImage(other.getExtractionImage());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -582,6 +666,125 @@ public final class ExtractionResponseOuterClass {
         }
         return level2VectorBuilder_;
       }
+
+      private OpenFinger.FingerprintOuterClass.Fingerprint extractionImage_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          OpenFinger.FingerprintOuterClass.Fingerprint, OpenFinger.FingerprintOuterClass.Fingerprint.Builder, OpenFinger.FingerprintOuterClass.FingerprintOrBuilder> extractionImageBuilder_;
+      /**
+       * <code>.OpenFinger.Fingerprint extraction_image = 2;</code>
+       * @return Whether the extractionImage field is set.
+       */
+      public boolean hasExtractionImage() {
+        return extractionImageBuilder_ != null || extractionImage_ != null;
+      }
+      /**
+       * <code>.OpenFinger.Fingerprint extraction_image = 2;</code>
+       * @return The extractionImage.
+       */
+      public OpenFinger.FingerprintOuterClass.Fingerprint getExtractionImage() {
+        if (extractionImageBuilder_ == null) {
+          return extractionImage_ == null ? OpenFinger.FingerprintOuterClass.Fingerprint.getDefaultInstance() : extractionImage_;
+        } else {
+          return extractionImageBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.OpenFinger.Fingerprint extraction_image = 2;</code>
+       */
+      public Builder setExtractionImage(OpenFinger.FingerprintOuterClass.Fingerprint value) {
+        if (extractionImageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          extractionImage_ = value;
+          onChanged();
+        } else {
+          extractionImageBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.OpenFinger.Fingerprint extraction_image = 2;</code>
+       */
+      public Builder setExtractionImage(
+          OpenFinger.FingerprintOuterClass.Fingerprint.Builder builderForValue) {
+        if (extractionImageBuilder_ == null) {
+          extractionImage_ = builderForValue.build();
+          onChanged();
+        } else {
+          extractionImageBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.OpenFinger.Fingerprint extraction_image = 2;</code>
+       */
+      public Builder mergeExtractionImage(OpenFinger.FingerprintOuterClass.Fingerprint value) {
+        if (extractionImageBuilder_ == null) {
+          if (extractionImage_ != null) {
+            extractionImage_ =
+              OpenFinger.FingerprintOuterClass.Fingerprint.newBuilder(extractionImage_).mergeFrom(value).buildPartial();
+          } else {
+            extractionImage_ = value;
+          }
+          onChanged();
+        } else {
+          extractionImageBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.OpenFinger.Fingerprint extraction_image = 2;</code>
+       */
+      public Builder clearExtractionImage() {
+        if (extractionImageBuilder_ == null) {
+          extractionImage_ = null;
+          onChanged();
+        } else {
+          extractionImage_ = null;
+          extractionImageBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.OpenFinger.Fingerprint extraction_image = 2;</code>
+       */
+      public OpenFinger.FingerprintOuterClass.Fingerprint.Builder getExtractionImageBuilder() {
+        
+        onChanged();
+        return getExtractionImageFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.OpenFinger.Fingerprint extraction_image = 2;</code>
+       */
+      public OpenFinger.FingerprintOuterClass.FingerprintOrBuilder getExtractionImageOrBuilder() {
+        if (extractionImageBuilder_ != null) {
+          return extractionImageBuilder_.getMessageOrBuilder();
+        } else {
+          return extractionImage_ == null ?
+              OpenFinger.FingerprintOuterClass.Fingerprint.getDefaultInstance() : extractionImage_;
+        }
+      }
+      /**
+       * <code>.OpenFinger.Fingerprint extraction_image = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          OpenFinger.FingerprintOuterClass.Fingerprint, OpenFinger.FingerprintOuterClass.Fingerprint.Builder, OpenFinger.FingerprintOuterClass.FingerprintOrBuilder> 
+          getExtractionImageFieldBuilder() {
+        if (extractionImageBuilder_ == null) {
+          extractionImageBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              OpenFinger.FingerprintOuterClass.Fingerprint, OpenFinger.FingerprintOuterClass.Fingerprint.Builder, OpenFinger.FingerprintOuterClass.FingerprintOrBuilder>(
+                  getExtractionImage(),
+                  getParentForChildren(),
+                  isClean());
+          extractionImage_ = null;
+        }
+        return extractionImageBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -649,14 +852,17 @@ public final class ExtractionResponseOuterClass {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\030ExtractionResponse.proto\022\nOpenFinger\032\022" +
-      "Level2Vector.proto\"D\n\022ExtractionResponse" +
-      "\022.\n\014level2vector\030\001 \001(\0132\030.OpenFinger.Leve" +
-      "l2Vectorb\006proto3"
+      "\n\030ExtractionResponse.proto\022\nOpenFinger\032\021" +
+      "Fingerprint.proto\032\022Level2Vector.proto\"w\n" +
+      "\022ExtractionResponse\022.\n\014level2vector\030\001 \001(" +
+      "\0132\030.OpenFinger.Level2Vector\0221\n\020extractio" +
+      "n_image\030\002 \001(\0132\027.OpenFinger.Fingerprintb\006" +
+      "proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          OpenFinger.FingerprintOuterClass.getDescriptor(),
           OpenFinger.Level2VectorOuterClass.getDescriptor(),
         });
     internal_static_OpenFinger_ExtractionResponse_descriptor =
@@ -664,7 +870,8 @@ public final class ExtractionResponseOuterClass {
     internal_static_OpenFinger_ExtractionResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_OpenFinger_ExtractionResponse_descriptor,
-        new java.lang.String[] { "Level2Vector", });
+        new java.lang.String[] { "Level2Vector", "ExtractionImage", });
+    OpenFinger.FingerprintOuterClass.getDescriptor();
     OpenFinger.Level2VectorOuterClass.getDescriptor();
   }
 

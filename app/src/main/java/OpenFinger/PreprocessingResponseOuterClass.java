@@ -14,6 +14,777 @@ public final class PreprocessingResponseOuterClass {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
+  public interface PreprocessingResultOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:OpenFinger.PreprocessingResult)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string info = 1;</code>
+     * @return The info.
+     */
+    java.lang.String getInfo();
+    /**
+     * <code>string info = 1;</code>
+     * @return The bytes for info.
+     */
+    com.google.protobuf.ByteString
+        getInfoBytes();
+
+    /**
+     * <code>.OpenFinger.Fingerprint fingerprint = 2;</code>
+     * @return Whether the fingerprint field is set.
+     */
+    boolean hasFingerprint();
+    /**
+     * <code>.OpenFinger.Fingerprint fingerprint = 2;</code>
+     * @return The fingerprint.
+     */
+    OpenFinger.FingerprintOuterClass.Fingerprint getFingerprint();
+    /**
+     * <code>.OpenFinger.Fingerprint fingerprint = 2;</code>
+     */
+    OpenFinger.FingerprintOuterClass.FingerprintOrBuilder getFingerprintOrBuilder();
+  }
+  /**
+   * Protobuf type {@code OpenFinger.PreprocessingResult}
+   */
+  public static final class PreprocessingResult extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:OpenFinger.PreprocessingResult)
+      PreprocessingResultOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use PreprocessingResult.newBuilder() to construct.
+    private PreprocessingResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private PreprocessingResult() {
+      info_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new PreprocessingResult();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PreprocessingResult(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              info_ = s;
+              break;
+            }
+            case 18: {
+              OpenFinger.FingerprintOuterClass.Fingerprint.Builder subBuilder = null;
+              if (fingerprint_ != null) {
+                subBuilder = fingerprint_.toBuilder();
+              }
+              fingerprint_ = input.readMessage(OpenFinger.FingerprintOuterClass.Fingerprint.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(fingerprint_);
+                fingerprint_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return OpenFinger.PreprocessingResponseOuterClass.internal_static_OpenFinger_PreprocessingResult_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return OpenFinger.PreprocessingResponseOuterClass.internal_static_OpenFinger_PreprocessingResult_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult.class, OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult.Builder.class);
+    }
+
+    public static final int INFO_FIELD_NUMBER = 1;
+    private volatile java.lang.Object info_;
+    /**
+     * <code>string info = 1;</code>
+     * @return The info.
+     */
+    @java.lang.Override
+    public java.lang.String getInfo() {
+      java.lang.Object ref = info_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        info_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string info = 1;</code>
+     * @return The bytes for info.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getInfoBytes() {
+      java.lang.Object ref = info_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        info_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int FINGERPRINT_FIELD_NUMBER = 2;
+    private OpenFinger.FingerprintOuterClass.Fingerprint fingerprint_;
+    /**
+     * <code>.OpenFinger.Fingerprint fingerprint = 2;</code>
+     * @return Whether the fingerprint field is set.
+     */
+    @java.lang.Override
+    public boolean hasFingerprint() {
+      return fingerprint_ != null;
+    }
+    /**
+     * <code>.OpenFinger.Fingerprint fingerprint = 2;</code>
+     * @return The fingerprint.
+     */
+    @java.lang.Override
+    public OpenFinger.FingerprintOuterClass.Fingerprint getFingerprint() {
+      return fingerprint_ == null ? OpenFinger.FingerprintOuterClass.Fingerprint.getDefaultInstance() : fingerprint_;
+    }
+    /**
+     * <code>.OpenFinger.Fingerprint fingerprint = 2;</code>
+     */
+    @java.lang.Override
+    public OpenFinger.FingerprintOuterClass.FingerprintOrBuilder getFingerprintOrBuilder() {
+      return getFingerprint();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getInfoBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, info_);
+      }
+      if (fingerprint_ != null) {
+        output.writeMessage(2, getFingerprint());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getInfoBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, info_);
+      }
+      if (fingerprint_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getFingerprint());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult)) {
+        return super.equals(obj);
+      }
+      OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult other = (OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult) obj;
+
+      if (!getInfo()
+          .equals(other.getInfo())) return false;
+      if (hasFingerprint() != other.hasFingerprint()) return false;
+      if (hasFingerprint()) {
+        if (!getFingerprint()
+            .equals(other.getFingerprint())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + INFO_FIELD_NUMBER;
+      hash = (53 * hash) + getInfo().hashCode();
+      if (hasFingerprint()) {
+        hash = (37 * hash) + FINGERPRINT_FIELD_NUMBER;
+        hash = (53 * hash) + getFingerprint().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code OpenFinger.PreprocessingResult}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:OpenFinger.PreprocessingResult)
+        OpenFinger.PreprocessingResponseOuterClass.PreprocessingResultOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return OpenFinger.PreprocessingResponseOuterClass.internal_static_OpenFinger_PreprocessingResult_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return OpenFinger.PreprocessingResponseOuterClass.internal_static_OpenFinger_PreprocessingResult_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult.class, OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult.Builder.class);
+      }
+
+      // Construct using OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        info_ = "";
+
+        if (fingerprintBuilder_ == null) {
+          fingerprint_ = null;
+        } else {
+          fingerprint_ = null;
+          fingerprintBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return OpenFinger.PreprocessingResponseOuterClass.internal_static_OpenFinger_PreprocessingResult_descriptor;
+      }
+
+      @java.lang.Override
+      public OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult getDefaultInstanceForType() {
+        return OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult build() {
+        OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult buildPartial() {
+        OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult result = new OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult(this);
+        result.info_ = info_;
+        if (fingerprintBuilder_ == null) {
+          result.fingerprint_ = fingerprint_;
+        } else {
+          result.fingerprint_ = fingerprintBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult) {
+          return mergeFrom((OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult other) {
+        if (other == OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult.getDefaultInstance()) return this;
+        if (!other.getInfo().isEmpty()) {
+          info_ = other.info_;
+          onChanged();
+        }
+        if (other.hasFingerprint()) {
+          mergeFingerprint(other.getFingerprint());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object info_ = "";
+      /**
+       * <code>string info = 1;</code>
+       * @return The info.
+       */
+      public java.lang.String getInfo() {
+        java.lang.Object ref = info_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          info_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string info = 1;</code>
+       * @return The bytes for info.
+       */
+      public com.google.protobuf.ByteString
+          getInfoBytes() {
+        java.lang.Object ref = info_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          info_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string info = 1;</code>
+       * @param value The info to set.
+       * @return This builder for chaining.
+       */
+      public Builder setInfo(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        info_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string info = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearInfo() {
+        
+        info_ = getDefaultInstance().getInfo();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string info = 1;</code>
+       * @param value The bytes for info to set.
+       * @return This builder for chaining.
+       */
+      public Builder setInfoBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        info_ = value;
+        onChanged();
+        return this;
+      }
+
+      private OpenFinger.FingerprintOuterClass.Fingerprint fingerprint_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          OpenFinger.FingerprintOuterClass.Fingerprint, OpenFinger.FingerprintOuterClass.Fingerprint.Builder, OpenFinger.FingerprintOuterClass.FingerprintOrBuilder> fingerprintBuilder_;
+      /**
+       * <code>.OpenFinger.Fingerprint fingerprint = 2;</code>
+       * @return Whether the fingerprint field is set.
+       */
+      public boolean hasFingerprint() {
+        return fingerprintBuilder_ != null || fingerprint_ != null;
+      }
+      /**
+       * <code>.OpenFinger.Fingerprint fingerprint = 2;</code>
+       * @return The fingerprint.
+       */
+      public OpenFinger.FingerprintOuterClass.Fingerprint getFingerprint() {
+        if (fingerprintBuilder_ == null) {
+          return fingerprint_ == null ? OpenFinger.FingerprintOuterClass.Fingerprint.getDefaultInstance() : fingerprint_;
+        } else {
+          return fingerprintBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.OpenFinger.Fingerprint fingerprint = 2;</code>
+       */
+      public Builder setFingerprint(OpenFinger.FingerprintOuterClass.Fingerprint value) {
+        if (fingerprintBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          fingerprint_ = value;
+          onChanged();
+        } else {
+          fingerprintBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.OpenFinger.Fingerprint fingerprint = 2;</code>
+       */
+      public Builder setFingerprint(
+          OpenFinger.FingerprintOuterClass.Fingerprint.Builder builderForValue) {
+        if (fingerprintBuilder_ == null) {
+          fingerprint_ = builderForValue.build();
+          onChanged();
+        } else {
+          fingerprintBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.OpenFinger.Fingerprint fingerprint = 2;</code>
+       */
+      public Builder mergeFingerprint(OpenFinger.FingerprintOuterClass.Fingerprint value) {
+        if (fingerprintBuilder_ == null) {
+          if (fingerprint_ != null) {
+            fingerprint_ =
+              OpenFinger.FingerprintOuterClass.Fingerprint.newBuilder(fingerprint_).mergeFrom(value).buildPartial();
+          } else {
+            fingerprint_ = value;
+          }
+          onChanged();
+        } else {
+          fingerprintBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.OpenFinger.Fingerprint fingerprint = 2;</code>
+       */
+      public Builder clearFingerprint() {
+        if (fingerprintBuilder_ == null) {
+          fingerprint_ = null;
+          onChanged();
+        } else {
+          fingerprint_ = null;
+          fingerprintBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.OpenFinger.Fingerprint fingerprint = 2;</code>
+       */
+      public OpenFinger.FingerprintOuterClass.Fingerprint.Builder getFingerprintBuilder() {
+        
+        onChanged();
+        return getFingerprintFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.OpenFinger.Fingerprint fingerprint = 2;</code>
+       */
+      public OpenFinger.FingerprintOuterClass.FingerprintOrBuilder getFingerprintOrBuilder() {
+        if (fingerprintBuilder_ != null) {
+          return fingerprintBuilder_.getMessageOrBuilder();
+        } else {
+          return fingerprint_ == null ?
+              OpenFinger.FingerprintOuterClass.Fingerprint.getDefaultInstance() : fingerprint_;
+        }
+      }
+      /**
+       * <code>.OpenFinger.Fingerprint fingerprint = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          OpenFinger.FingerprintOuterClass.Fingerprint, OpenFinger.FingerprintOuterClass.Fingerprint.Builder, OpenFinger.FingerprintOuterClass.FingerprintOrBuilder> 
+          getFingerprintFieldBuilder() {
+        if (fingerprintBuilder_ == null) {
+          fingerprintBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              OpenFinger.FingerprintOuterClass.Fingerprint, OpenFinger.FingerprintOuterClass.Fingerprint.Builder, OpenFinger.FingerprintOuterClass.FingerprintOrBuilder>(
+                  getFingerprint(),
+                  getParentForChildren(),
+                  isClean());
+          fingerprint_ = null;
+        }
+        return fingerprintBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:OpenFinger.PreprocessingResult)
+    }
+
+    // @@protoc_insertion_point(class_scope:OpenFinger.PreprocessingResult)
+    private static final OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult();
+    }
+
+    public static OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<PreprocessingResult>
+        PARSER = new com.google.protobuf.AbstractParser<PreprocessingResult>() {
+      @java.lang.Override
+      public PreprocessingResult parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PreprocessingResult(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<PreprocessingResult> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PreprocessingResult> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface PreprocessingResponseOrBuilder extends
       // @@protoc_insertion_point(interface_extends:OpenFinger.PreprocessingResponse)
       com.google.protobuf.MessageOrBuilder {
@@ -23,24 +794,24 @@ public final class PreprocessingResponseOuterClass {
      * array of preprocessing results (images after individual processing stages)
      * </pre>
      *
-     * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+     * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
      */
-    java.util.List<OpenFinger.FingerprintOuterClass.Fingerprint> 
+    java.util.List<OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult> 
         getResultsList();
     /**
      * <pre>
      * array of preprocessing results (images after individual processing stages)
      * </pre>
      *
-     * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+     * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
      */
-    OpenFinger.FingerprintOuterClass.Fingerprint getResults(int index);
+    OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult getResults(int index);
     /**
      * <pre>
      * array of preprocessing results (images after individual processing stages)
      * </pre>
      *
-     * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+     * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
      */
     int getResultsCount();
     /**
@@ -48,18 +819,18 @@ public final class PreprocessingResponseOuterClass {
      * array of preprocessing results (images after individual processing stages)
      * </pre>
      *
-     * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+     * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
      */
-    java.util.List<? extends OpenFinger.FingerprintOuterClass.FingerprintOrBuilder> 
+    java.util.List<? extends OpenFinger.PreprocessingResponseOuterClass.PreprocessingResultOrBuilder> 
         getResultsOrBuilderList();
     /**
      * <pre>
      * array of preprocessing results (images after individual processing stages)
      * </pre>
      *
-     * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+     * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
      */
-    OpenFinger.FingerprintOuterClass.FingerprintOrBuilder getResultsOrBuilder(
+    OpenFinger.PreprocessingResponseOuterClass.PreprocessingResultOrBuilder getResultsOrBuilder(
         int index);
   }
   /**
@@ -115,11 +886,11 @@ public final class PreprocessingResponseOuterClass {
               break;
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                results_ = new java.util.ArrayList<OpenFinger.FingerprintOuterClass.Fingerprint>();
+                results_ = new java.util.ArrayList<OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult>();
                 mutable_bitField0_ |= 0x00000001;
               }
               results_.add(
-                  input.readMessage(OpenFinger.FingerprintOuterClass.Fingerprint.parser(), extensionRegistry));
+                  input.readMessage(OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -158,16 +929,16 @@ public final class PreprocessingResponseOuterClass {
     }
 
     public static final int RESULTS_FIELD_NUMBER = 1;
-    private java.util.List<OpenFinger.FingerprintOuterClass.Fingerprint> results_;
+    private java.util.List<OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult> results_;
     /**
      * <pre>
      * array of preprocessing results (images after individual processing stages)
      * </pre>
      *
-     * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+     * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
      */
     @java.lang.Override
-    public java.util.List<OpenFinger.FingerprintOuterClass.Fingerprint> getResultsList() {
+    public java.util.List<OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult> getResultsList() {
       return results_;
     }
     /**
@@ -175,10 +946,10 @@ public final class PreprocessingResponseOuterClass {
      * array of preprocessing results (images after individual processing stages)
      * </pre>
      *
-     * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+     * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
      */
     @java.lang.Override
-    public java.util.List<? extends OpenFinger.FingerprintOuterClass.FingerprintOrBuilder> 
+    public java.util.List<? extends OpenFinger.PreprocessingResponseOuterClass.PreprocessingResultOrBuilder> 
         getResultsOrBuilderList() {
       return results_;
     }
@@ -187,7 +958,7 @@ public final class PreprocessingResponseOuterClass {
      * array of preprocessing results (images after individual processing stages)
      * </pre>
      *
-     * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+     * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
      */
     @java.lang.Override
     public int getResultsCount() {
@@ -198,10 +969,10 @@ public final class PreprocessingResponseOuterClass {
      * array of preprocessing results (images after individual processing stages)
      * </pre>
      *
-     * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+     * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
      */
     @java.lang.Override
-    public OpenFinger.FingerprintOuterClass.Fingerprint getResults(int index) {
+    public OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult getResults(int index) {
       return results_.get(index);
     }
     /**
@@ -209,10 +980,10 @@ public final class PreprocessingResponseOuterClass {
      * array of preprocessing results (images after individual processing stages)
      * </pre>
      *
-     * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+     * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
      */
     @java.lang.Override
-    public OpenFinger.FingerprintOuterClass.FingerprintOrBuilder getResultsOrBuilder(
+    public OpenFinger.PreprocessingResponseOuterClass.PreprocessingResultOrBuilder getResultsOrBuilder(
         int index) {
       return results_.get(index);
     }
@@ -563,26 +1334,26 @@ public final class PreprocessingResponseOuterClass {
       }
       private int bitField0_;
 
-      private java.util.List<OpenFinger.FingerprintOuterClass.Fingerprint> results_ =
+      private java.util.List<OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult> results_ =
         java.util.Collections.emptyList();
       private void ensureResultsIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
-          results_ = new java.util.ArrayList<OpenFinger.FingerprintOuterClass.Fingerprint>(results_);
+          results_ = new java.util.ArrayList<OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult>(results_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          OpenFinger.FingerprintOuterClass.Fingerprint, OpenFinger.FingerprintOuterClass.Fingerprint.Builder, OpenFinger.FingerprintOuterClass.FingerprintOrBuilder> resultsBuilder_;
+          OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult, OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult.Builder, OpenFinger.PreprocessingResponseOuterClass.PreprocessingResultOrBuilder> resultsBuilder_;
 
       /**
        * <pre>
        * array of preprocessing results (images after individual processing stages)
        * </pre>
        *
-       * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+       * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
        */
-      public java.util.List<OpenFinger.FingerprintOuterClass.Fingerprint> getResultsList() {
+      public java.util.List<OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult> getResultsList() {
         if (resultsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(results_);
         } else {
@@ -594,7 +1365,7 @@ public final class PreprocessingResponseOuterClass {
        * array of preprocessing results (images after individual processing stages)
        * </pre>
        *
-       * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+       * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
        */
       public int getResultsCount() {
         if (resultsBuilder_ == null) {
@@ -608,9 +1379,9 @@ public final class PreprocessingResponseOuterClass {
        * array of preprocessing results (images after individual processing stages)
        * </pre>
        *
-       * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+       * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
        */
-      public OpenFinger.FingerprintOuterClass.Fingerprint getResults(int index) {
+      public OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult getResults(int index) {
         if (resultsBuilder_ == null) {
           return results_.get(index);
         } else {
@@ -622,10 +1393,10 @@ public final class PreprocessingResponseOuterClass {
        * array of preprocessing results (images after individual processing stages)
        * </pre>
        *
-       * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+       * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
        */
       public Builder setResults(
-          int index, OpenFinger.FingerprintOuterClass.Fingerprint value) {
+          int index, OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult value) {
         if (resultsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -643,10 +1414,10 @@ public final class PreprocessingResponseOuterClass {
        * array of preprocessing results (images after individual processing stages)
        * </pre>
        *
-       * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+       * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
        */
       public Builder setResults(
-          int index, OpenFinger.FingerprintOuterClass.Fingerprint.Builder builderForValue) {
+          int index, OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult.Builder builderForValue) {
         if (resultsBuilder_ == null) {
           ensureResultsIsMutable();
           results_.set(index, builderForValue.build());
@@ -661,9 +1432,9 @@ public final class PreprocessingResponseOuterClass {
        * array of preprocessing results (images after individual processing stages)
        * </pre>
        *
-       * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+       * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
        */
-      public Builder addResults(OpenFinger.FingerprintOuterClass.Fingerprint value) {
+      public Builder addResults(OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult value) {
         if (resultsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -681,10 +1452,10 @@ public final class PreprocessingResponseOuterClass {
        * array of preprocessing results (images after individual processing stages)
        * </pre>
        *
-       * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+       * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
        */
       public Builder addResults(
-          int index, OpenFinger.FingerprintOuterClass.Fingerprint value) {
+          int index, OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult value) {
         if (resultsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -702,10 +1473,10 @@ public final class PreprocessingResponseOuterClass {
        * array of preprocessing results (images after individual processing stages)
        * </pre>
        *
-       * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+       * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
        */
       public Builder addResults(
-          OpenFinger.FingerprintOuterClass.Fingerprint.Builder builderForValue) {
+          OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult.Builder builderForValue) {
         if (resultsBuilder_ == null) {
           ensureResultsIsMutable();
           results_.add(builderForValue.build());
@@ -720,10 +1491,10 @@ public final class PreprocessingResponseOuterClass {
        * array of preprocessing results (images after individual processing stages)
        * </pre>
        *
-       * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+       * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
        */
       public Builder addResults(
-          int index, OpenFinger.FingerprintOuterClass.Fingerprint.Builder builderForValue) {
+          int index, OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult.Builder builderForValue) {
         if (resultsBuilder_ == null) {
           ensureResultsIsMutable();
           results_.add(index, builderForValue.build());
@@ -738,10 +1509,10 @@ public final class PreprocessingResponseOuterClass {
        * array of preprocessing results (images after individual processing stages)
        * </pre>
        *
-       * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+       * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
        */
       public Builder addAllResults(
-          java.lang.Iterable<? extends OpenFinger.FingerprintOuterClass.Fingerprint> values) {
+          java.lang.Iterable<? extends OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult> values) {
         if (resultsBuilder_ == null) {
           ensureResultsIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -757,7 +1528,7 @@ public final class PreprocessingResponseOuterClass {
        * array of preprocessing results (images after individual processing stages)
        * </pre>
        *
-       * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+       * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
        */
       public Builder clearResults() {
         if (resultsBuilder_ == null) {
@@ -774,7 +1545,7 @@ public final class PreprocessingResponseOuterClass {
        * array of preprocessing results (images after individual processing stages)
        * </pre>
        *
-       * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+       * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
        */
       public Builder removeResults(int index) {
         if (resultsBuilder_ == null) {
@@ -791,9 +1562,9 @@ public final class PreprocessingResponseOuterClass {
        * array of preprocessing results (images after individual processing stages)
        * </pre>
        *
-       * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+       * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
        */
-      public OpenFinger.FingerprintOuterClass.Fingerprint.Builder getResultsBuilder(
+      public OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult.Builder getResultsBuilder(
           int index) {
         return getResultsFieldBuilder().getBuilder(index);
       }
@@ -802,9 +1573,9 @@ public final class PreprocessingResponseOuterClass {
        * array of preprocessing results (images after individual processing stages)
        * </pre>
        *
-       * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+       * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
        */
-      public OpenFinger.FingerprintOuterClass.FingerprintOrBuilder getResultsOrBuilder(
+      public OpenFinger.PreprocessingResponseOuterClass.PreprocessingResultOrBuilder getResultsOrBuilder(
           int index) {
         if (resultsBuilder_ == null) {
           return results_.get(index);  } else {
@@ -816,9 +1587,9 @@ public final class PreprocessingResponseOuterClass {
        * array of preprocessing results (images after individual processing stages)
        * </pre>
        *
-       * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+       * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
        */
-      public java.util.List<? extends OpenFinger.FingerprintOuterClass.FingerprintOrBuilder> 
+      public java.util.List<? extends OpenFinger.PreprocessingResponseOuterClass.PreprocessingResultOrBuilder> 
            getResultsOrBuilderList() {
         if (resultsBuilder_ != null) {
           return resultsBuilder_.getMessageOrBuilderList();
@@ -831,41 +1602,41 @@ public final class PreprocessingResponseOuterClass {
        * array of preprocessing results (images after individual processing stages)
        * </pre>
        *
-       * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+       * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
        */
-      public OpenFinger.FingerprintOuterClass.Fingerprint.Builder addResultsBuilder() {
+      public OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult.Builder addResultsBuilder() {
         return getResultsFieldBuilder().addBuilder(
-            OpenFinger.FingerprintOuterClass.Fingerprint.getDefaultInstance());
+            OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult.getDefaultInstance());
       }
       /**
        * <pre>
        * array of preprocessing results (images after individual processing stages)
        * </pre>
        *
-       * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+       * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
        */
-      public OpenFinger.FingerprintOuterClass.Fingerprint.Builder addResultsBuilder(
+      public OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult.Builder addResultsBuilder(
           int index) {
         return getResultsFieldBuilder().addBuilder(
-            index, OpenFinger.FingerprintOuterClass.Fingerprint.getDefaultInstance());
+            index, OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult.getDefaultInstance());
       }
       /**
        * <pre>
        * array of preprocessing results (images after individual processing stages)
        * </pre>
        *
-       * <code>repeated .OpenFinger.Fingerprint results = 1;</code>
+       * <code>repeated .OpenFinger.PreprocessingResult results = 1;</code>
        */
-      public java.util.List<OpenFinger.FingerprintOuterClass.Fingerprint.Builder> 
+      public java.util.List<OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult.Builder> 
            getResultsBuilderList() {
         return getResultsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          OpenFinger.FingerprintOuterClass.Fingerprint, OpenFinger.FingerprintOuterClass.Fingerprint.Builder, OpenFinger.FingerprintOuterClass.FingerprintOrBuilder> 
+          OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult, OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult.Builder, OpenFinger.PreprocessingResponseOuterClass.PreprocessingResultOrBuilder> 
           getResultsFieldBuilder() {
         if (resultsBuilder_ == null) {
           resultsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              OpenFinger.FingerprintOuterClass.Fingerprint, OpenFinger.FingerprintOuterClass.Fingerprint.Builder, OpenFinger.FingerprintOuterClass.FingerprintOrBuilder>(
+              OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult, OpenFinger.PreprocessingResponseOuterClass.PreprocessingResult.Builder, OpenFinger.PreprocessingResponseOuterClass.PreprocessingResultOrBuilder>(
                   results_,
                   ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
@@ -928,6 +1699,11 @@ public final class PreprocessingResponseOuterClass {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_OpenFinger_PreprocessingResult_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_OpenFinger_PreprocessingResult_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_OpenFinger_PreprocessingResponse_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -942,17 +1718,25 @@ public final class PreprocessingResponseOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\033PreprocessingResponse.proto\022\nOpenFinge" +
-      "r\032\021Fingerprint.proto\"A\n\025PreprocessingRes" +
-      "ponse\022(\n\007results\030\001 \003(\0132\027.OpenFinger.Fing" +
-      "erprintb\006proto3"
+      "r\032\021Fingerprint.proto\"Q\n\023PreprocessingRes" +
+      "ult\022\014\n\004info\030\001 \001(\t\022,\n\013fingerprint\030\002 \001(\0132\027" +
+      ".OpenFinger.Fingerprint\"I\n\025Preprocessing" +
+      "Response\0220\n\007results\030\001 \003(\0132\037.OpenFinger.P" +
+      "reprocessingResultb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           OpenFinger.FingerprintOuterClass.getDescriptor(),
         });
-    internal_static_OpenFinger_PreprocessingResponse_descriptor =
+    internal_static_OpenFinger_PreprocessingResult_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_OpenFinger_PreprocessingResult_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_OpenFinger_PreprocessingResult_descriptor,
+        new java.lang.String[] { "Info", "Fingerprint", });
+    internal_static_OpenFinger_PreprocessingResponse_descriptor =
+      getDescriptor().getMessageTypes().get(1);
     internal_static_OpenFinger_PreprocessingResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_OpenFinger_PreprocessingResponse_descriptor,

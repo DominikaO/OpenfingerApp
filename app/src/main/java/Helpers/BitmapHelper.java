@@ -3,6 +3,8 @@ package Helpers;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 
+import java.nio.ByteBuffer;
+
 import OpenFinger.FingerprintOuterClass;
 
 public class BitmapHelper {
@@ -38,4 +40,20 @@ public class BitmapHelper {
         return bmp;
 
     }
+
+    public static Bitmap ColorFingerprintToBitmap(FingerprintOuterClass.Fingerprint fingerprint) {
+        int dataSize = fingerprint.getData().size();
+        byte[] bitmapdata = new byte[dataSize];
+        System.arraycopy(fingerprint.getData().toByteArray(), 0, bitmapdata, 0, dataSize); //skopiruje bajty
+
+        Bitmap bmp = Bitmap.createBitmap(fingerprint.getWidth(), fingerprint.getHeight(), Bitmap.Config.ARGB_8888);//vytvori mapu, ktora sa da menit
+        ByteBuffer buffer = ByteBuffer.wrap(bitmapdata);
+
+        bmp.copyPixelsFromBuffer(buffer);
+
+        return bmp;
+
+    }
+
+
 }

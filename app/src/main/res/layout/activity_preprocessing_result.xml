@@ -12,11 +12,12 @@
     android:foregroundTint="#6F22F6"
     android:orientation="vertical"
     tools:context=".PreprocessingResultActivity">
+
     <ImageButton
         android:id="@+id/b_back_to_menu4"
         android:layout_width="42dp"
         android:layout_height="51dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         android:background="#ecdcfc"
         android:backgroundTint="#ecdcfc"

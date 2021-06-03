@@ -1,30 +1,29 @@
 package sk.stuba.fei.biometricserverapp;
 
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.net.Socket;
-import java.util.List;
 
+import Helpers.BitmapHelper;
+import OpenFinger.FingerprintOuterClass;
 import OpenFinger.Level2OuterClass;
+import OpenFinger.Level2VectorOuterClass;
 import OpenFinger.WrapperOuterClass;
 import handlers.SocketHandler;
-import handlers.SyncImageHandler;
 
 public class ExtractionResultActivity extends AppCompatActivity {
 
     ImageView imgFingerprint;
     Boolean flag= false;
     WrapperOuterClass.Wrapper wrapper;
+    TextView tv_level2;
 
 
     @Override
@@ -33,36 +32,33 @@ public class ExtractionResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_extraction_result);
 
         imgFingerprint = findViewById(R.id.imageView_fingerprint4);
+        tv_level2 = findViewById(R.id.tv_Level2Vector);
 
         new Thread(new ReadResponse()).start();
 
         while(true){
             if (flag == true){
-                drawVectors(wrapper, SyncImageHandler.getBmp());
+                setResponseIntent(wrapper);
+                flag= false;
+                break;
             }
-            flag= false;
-            break;
+
         }
     }
 
-    public void drawVectors(WrapperOuterClass.Wrapper response, Bitmap fingerprint){
-        Canvas canvas;
-        Bitmap copy = null;
-        if (!fingerprint.isMutable()){
-            copy = fingerprint.copy(Bitmap.Config.ARGB_8888,true);
-            canvas = new Canvas(copy);
-        }else {
-            canvas = new Canvas(fingerprint);
-        }
-        Paint p = new Paint();
-        p.setColor(Color.RED);
+    public void setResponseIntent(WrapperOuterClass.Wrapper response){
+        FingerprintOuterClass.Fingerprint fingerprintView = response.getExtractResponse().getExtractionImage();
+        Level2VectorOuterClass.Level2Vector vector = response.getExtractResponse().getLevel2Vector();
 
-        List<Level2OuterClass.Level2> resultList =
-                response.getExtractResponse().getLevel2Vector().getLevel2VectorList();
-        for (Level2OuterClass.Level2 vectors : resultList){
-            canvas.drawCircle(vectors.getX(),vectors.getY(), 1,p);
+        Bitmap bmpView =BitmapHelper.FingerprintToBitmap(fingerprintView);
+        imgFingerprint.setImageBitmap(bmpView);
+
+        StringBuilder level2response =new StringBuilder();
+        for(Level2OuterClass.Level2 level2: vector.getLevel2VectorList()){
+            level2response.append(level2.toString());
         }
-        imgFingerprint.setImageDrawable(new BitmapDrawable(getResources(),copy));
+        //tv_level2.setText(level2response.toString());
+
     }
 
     public class ReadResponse implements Runnable {
@@ -92,8 +88,9 @@ public class ExtractionResultActivity extends AppCompatActivity {
 
                     }
                 }
-                flag =true;
+
                 wrapper = response;
+                flag =true;
 
 
 
